@@ -36,11 +36,7 @@ public class Calculator {
             okRims = true;
             if ((one >= 1 && one <= 10) && (tho >= 1 && tho <= 10)) {
             } else throw new Exception("Числа должны быть от 1 до 10 включительно");
-
-            if (one < tho) {
-                throw new Exception("В римской системе нет отрицательных чисел");
-            }
-
+            
         } else if (!Rims.doesTheKeyContain(line[0]) && !Rims.doesTheKeyContain(line[1])) {
             one = Integer.parseInt(line[0]);
             tho = Integer.parseInt(line[1]);
@@ -53,7 +49,11 @@ public class Calculator {
 
         if (okRims != true) {
             return String.valueOf(result);
+        } else if (null == okRimsParse(result)) {
+            throw new Exception("В римской системе нет отрицательных чисел");
         } else return okRimsParse(result);
+
+
     }
 
     static int calculator(int one, int tho, String lineOppend) {
